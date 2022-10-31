@@ -2,12 +2,9 @@ package htw.berlin.webtech.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-    @Controller
+    @RestController
     public class GreetingController {
 
         @GetMapping("/greeting")
@@ -16,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
             return "greeting";
         }
 
-        // funktioniert nicht, kein template?!
+
         @RequestMapping("/answer/{name}/{age}")
         public String pathParams(@PathVariable("name") String name,
                                  @PathVariable("age") String age) {
