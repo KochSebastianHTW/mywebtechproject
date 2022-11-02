@@ -1,4 +1,4 @@
-package htw.berlin.webtech.demo.api;
+package htw.berlin.webtech.webDemo.api;
 
 import java.util.ArrayList;
 import java.util.List;

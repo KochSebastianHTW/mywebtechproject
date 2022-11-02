@@ -1,6 +1,6 @@
-package htw.berlin.webtech.demo;
+package htw.berlin.webtech.webDemo;
 
-import htw.berlin.webtech.demo.api.Card;
+import htw.berlin.webtech.webDemo.api.Card;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
