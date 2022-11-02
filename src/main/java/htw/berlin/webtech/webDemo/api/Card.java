@@ -11,14 +11,14 @@ public class Card {
     private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
     private List<Label> labels; // Labels der Karte
     private List<String> activity; // Aktivität auf der Karte; wie: Fälligkeitsdatum geändert etc.
-    private Register register; // Liste
+    //private Register register; // Liste
 
-    public Card(long id, String name, String description, LocalDateTime dueDate, Register register) {
+    public Card(long id, String name, String description, LocalDateTime dueDate) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
-        this.register = register;
+        //this.register = register;
     }
 
     public long getId() {
@@ -69,7 +69,9 @@ public class Card {
         this.labels = labels;
     }
 
+    /*
     public Register getRegister() { return register; }
     
     public void setRegister(Register register) { this.register = register; }
+    */
 }

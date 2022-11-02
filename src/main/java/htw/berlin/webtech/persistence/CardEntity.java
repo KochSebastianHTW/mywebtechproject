@@ -1,14 +1,14 @@
 package htw.berlin.webtech.persistence;
 
-import htw.berlin.webtech.webDemo.api.Label;
-import htw.berlin.webtech.webDemo.api.Register;
+//import htw.berlin.webtech.webDemo.api.Label;
+//import htw.berlin.webtech.webDemo.api.Register;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+//import java.util.List;
 
 @Entity (name = "card")
-public class CardEntity {
+public class CardEntity { // Dataclip wird nicht erzeugt, DB-connection bei Database-Reiter verbindet nicht, wegen falscher Credentials?!
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
