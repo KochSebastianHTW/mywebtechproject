@@ -24,6 +24,7 @@ public class CardEntity {
     @Column(name = "due_date")
     private LocalDateTime dueDate;
 
+    /*
     @Column(name = "labels")
     private List<Label> labels;
 
@@ -32,15 +33,18 @@ public class CardEntity {
 
     @Column(name = "register")
     private Register register;
+    */
 
-    public CardEntity(Long id, String name, String description, LocalDateTime dueDate, List<Label> labels, List<String> activity, Register register) {
+    public CardEntity(Long id, String name, String description, LocalDateTime dueDate) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
+        /*
         this.labels = labels;
         this.activity = activity;
         this.register = register;
+        */
     }
 
     protected CardEntity() {}
@@ -73,6 +77,7 @@ public class CardEntity {
         this.dueDate = dueDate;
     }
 
+    /*
     public List<Label> getLabels() {
         return labels;
     }
@@ -96,4 +101,5 @@ public class CardEntity {
     public void setRegister(Register register) {
         this.register = register;
     }
+    */
 }
