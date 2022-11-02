@@ -33,8 +33,8 @@ public class CardRestController {
                           @PathVariable("rank") String rank,
                           @PathVariable("name") String name) {
         return String.format(
-                "Einheit: %s" +
-                "Rang: %s" +
+                "Einheit: %s\n" +
+                "Rang: %s\n" +
                 "Name: %s",
                 unit, rank, name
         );
