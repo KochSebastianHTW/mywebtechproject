@@ -3,10 +3,7 @@ package htw.berlin.webtech.webDemo;
 import htw.berlin.webtech.service.CardService;
 import htw.berlin.webtech.webDemo.api.Card;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,9 +28,23 @@ public class CardRestController {
         return String.format("%s is %s years old", name, age);
     }
 
-    @RequestMapping("/RoR/AVP/{rank}/{name}")
-    public String rankAvp(@PathVariable("rank") String rank,
+    @RequestMapping("/{unit}/{rank}/{name}") // RequestMapping testen
+    public String pathParamsMilitary(@PathVariable("unit") String unit,
+                          @PathVariable("rank") String rank,
                           @PathVariable("name") String name) {
-        return "%s %s ist ein richtig guter Pilot!";
+        return String.format(
+                "Einheit: %s" +
+                "Rang: %s" +
+                "Name: %s",
+                unit, rank, name
+        );
     }
+
+    @RequestMapping("/sentence")
+    public String queryParams(@RequestParam("say") String say) {
+        return String.format("%s",say);
+    }
+
+    @RequestMapping("/")
+    public String home() {return "Hier jibtet nüscht zu sehen! Did kannst mir glooben.";}
 }
