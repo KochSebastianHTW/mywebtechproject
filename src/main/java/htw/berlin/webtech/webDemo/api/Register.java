@@ -5,21 +5,20 @@ import java.util.List;
 
 public class Register {
 
-    private int id;
+    private long id;
     private String name;
     private List<Card> cardList;
 
-    public Register(int id, String name) {
+    public Register(long id, String name) {
         this.id = id;
         this.name = name;
-        this.cardList = new ArrayList<>();
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
