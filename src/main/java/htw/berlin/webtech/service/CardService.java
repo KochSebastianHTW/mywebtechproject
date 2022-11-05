@@ -3,6 +3,7 @@ package htw.berlin.webtech.service;
 import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.persistence.CardRepository;
 import htw.berlin.webtech.webDemo.api.Card;
+import htw.berlin.webtech.webDemo.api.CardCreateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,12 +21,22 @@ public class CardService {
     public List<Card> findAll() {
         List<CardEntity> cards = cardRepository.findAll();
         return cards.stream()
-                .map(cardEntity -> new Card(
-                        cardEntity.getId(),
-                        cardEntity.getName(),
-                        cardEntity.getDescription(),
-                        cardEntity.getDueDate()
-                ))
+                .map(this::transformEntity)
                 .collect(Collectors.toList());
+    }
+
+    public Card create(CardCreateRequest request) {
+        var cardEntity = new CardEntity(request.getName(), request.getDescription(), request.getDueDate());
+        cardEntity = cardRepository.save(cardEntity);
+        return transformEntity(cardEntity);
+    }
+
+    private Card transformEntity(CardEntity cardEntity) {
+        return new Card(
+                cardEntity.getId(),
+                cardEntity.getName(),
+                cardEntity.getDescription(),
+                cardEntity.getDueDate()
+        );
     }
 }

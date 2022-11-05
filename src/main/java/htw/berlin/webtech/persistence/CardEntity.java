@@ -35,7 +35,7 @@ public class CardEntity { // Dataclip wird nicht erzeugt, DB-connection bei Data
     private Register register;
     */
 
-    public CardEntity(Long id, String name, String description, LocalDateTime dueDate) {
+    public CardEntity(String name, String description, LocalDateTime dueDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -46,8 +46,6 @@ public class CardEntity { // Dataclip wird nicht erzeugt, DB-connection bei Data
         this.register = register;
         */
     }
-
-    protected CardEntity() {}
 
     public Long getId() {
         return id;

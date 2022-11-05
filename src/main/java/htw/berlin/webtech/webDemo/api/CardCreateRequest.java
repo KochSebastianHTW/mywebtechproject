@@ -3,31 +3,19 @@ package htw.berlin.webtech.webDemo.api;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Card {
-
-    private long id; // eindeutige ID der Karte
+public class CardCreateRequest {
     private String name; // Name der Karte
     private String description; // Beschreibung zum to-do
     private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
-    /*
     private List<Label> labels; // Labels der Karte
     private List<String> activity; // Aktivität auf der Karte; wie: Fälligkeitsdatum geändert etc.
-    private Register register; // Liste
-    */
+    //private Register register; // Liste
 
-    public Card(long id, String name, String description, LocalDateTime dueDate) {
-        this.id = id;
+    public CardCreateRequest(String name, String description, LocalDateTime dueDate) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+        //this.register = register;
     }
 
     public String getName() {
@@ -54,7 +42,6 @@ public class Card {
         this.dueDate = dueDate;
     }
 
-    /*
     public List<String> getActivity() {
         return activity;
     }
@@ -71,10 +58,9 @@ public class Card {
         this.labels = labels;
     }
 
-    public Register getRegister() {
-        return register;
-    }
-    
+    /*
+    public Register getRegister() { return register; }
+
     public void setRegister(Register register) { this.register = register; }
     */
 }

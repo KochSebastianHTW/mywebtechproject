@@ -1,10 +1,14 @@
 package htw.berlin.webtech.webDemo;
 
+import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.service.CardService;
 import htw.berlin.webtech.webDemo.api.Card;
+import htw.berlin.webtech.webDemo.api.CardCreateRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -21,30 +25,13 @@ public class CardRestController {
         return ResponseEntity.ok(cardService.findAll());
     }
 
-
-    @RequestMapping("/answer/{name}/{age}")
-    public String pathParams(@PathVariable("name") String name,
-                             @PathVariable("age") String age) {
-        return String.format("%s is %s years old", name, age);
+    @PostMapping(path = "/api/v1/cards")
+    public ResponseEntity<Void> createCard (@RequestBody CardCreateRequest request) throws URISyntaxException {
+        var card = cardService.create((request));
+        URI uri = new URI("/api/v1/cards/" + card.getId());
+        return ResponseEntity.created(uri).build();
     }
 
-    @RequestMapping("/{unit}/{rank}/{name}") // RequestMapping testen
-    public String pathParamsMilitary(@PathVariable("unit") String unit,
-                          @PathVariable("rank") String rank,
-                          @PathVariable("name") String name) {
-        return String.format(
-                "Einheit: %s\n" +
-                "Rang: %s\n" +
-                "Name: %s",
-                unit, rank, name
-        );
-    }
-
-    @RequestMapping("/sentence")
-    public String queryParams(@RequestParam("say") String say) {
-        return String.format("%s",say);
-    }
-
-    @RequestMapping("/")
+    @RequestMapping("/") //home Seite später?!
     public String home() {return "Hier jibtet nüscht zu sehen! Did kannst mir glooben.";}
 }
