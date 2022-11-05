@@ -1,4 +1,4 @@
-[![CI](https://github.com/KochSebastianHTW/mywebtechproject/actions/workflows/continiousIntegration.yml/badge.svg)](https://github.com/KochSebastianHTW/mywebtechproject/actions/workflows/continiousIntegration.yml)
+[![CI](https://github.com/KochSebastianHTW/mywebtechproject/actions/workflows/continuousIntegration.yml/badge.svg)](https://github.com/KochSebastianHTW/mywebtechproject/actions/workflows/continuousIntegration.yml)
 # mywebtechproject
 
 
