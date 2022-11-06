@@ -21,8 +21,14 @@ public class CardRestController {
     }
 
     @GetMapping(path = "/api/v1/cards")
-    public ResponseEntity<List<Card>> getAllCards() {
+    public ResponseEntity<List<Card>> fetchCards() {
         return ResponseEntity.ok(cardService.findAll());
+    }
+
+    @GetMapping(path = "/api/v1/cards/{id}")
+    public ResponseEntity<Card> fetchCardById(@PathVariable Long id) {
+        var card = cardService.findById(id);
+        return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
     }
 
     @PostMapping(path = "/api/v1/cards")

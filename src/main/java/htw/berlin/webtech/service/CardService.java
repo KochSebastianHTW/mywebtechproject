@@ -25,6 +25,11 @@ public class CardService {
                 .collect(Collectors.toList());
     }
 
+    public Card findById(Long id) {
+        var cardEntity = cardRepository.findById(id); //optional Objekt kann sagen, dass es leer ist ohne nullPointerException
+        return cardEntity.map(this::transformEntity).orElse(null);
+    }
+
     public Card create(CardCreateRequest request) {
         var cardEntity = new CardEntity(request.getName(), request.getDescription(), request.getDueDate());
         cardEntity = cardRepository.save(cardEntity);
