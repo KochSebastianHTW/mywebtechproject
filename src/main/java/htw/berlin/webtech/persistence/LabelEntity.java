@@ -18,7 +18,7 @@ public class LabelEntity {
     @Column(name = "colour")
     private String colour;
 
-    @OneToMany(mappedBy = "labels", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
     private List<CardEntity> usingCards = new ArrayList<>();
 
     public LabelEntity(String name, String colour, List<CardEntity> usingCards) {

@@ -29,7 +29,6 @@ public class CardEntity {
     private LabelEntity label;
 
     public CardEntity(String name, String description, LocalDateTime dueDate, Register register, LabelEntity label) {
-        this.id = id;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
