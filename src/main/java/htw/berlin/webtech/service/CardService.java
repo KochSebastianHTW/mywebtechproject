@@ -3,7 +3,7 @@ package htw.berlin.webtech.service;
 import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.persistence.CardRepository;
 import htw.berlin.webtech.webDemo.api.Card;
-import htw.berlin.webtech.webDemo.api.CardCreateRequest;
+import htw.berlin.webtech.webDemo.api.CardManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,9 +30,24 @@ public class CardService {
         return cardEntity.map(this::transformEntity).orElse(null);
     }
 
-    public Card create(CardCreateRequest request) {
+    public Card create(CardManipulationRequest request) {
         var cardEntity = new CardEntity(request.getName(), request.getDescription(), request.getDueDate());
         cardEntity = cardRepository.save(cardEntity);
+        return transformEntity(cardEntity);
+    }
+
+    public Card update(Long id, CardManipulationRequest request) {
+        var cardEntityOptional = cardRepository.findById(id);
+        if (cardEntityOptional.isEmpty()) {
+            return null;
+        }
+
+        var cardEntity = cardEntityOptional.get();
+        cardEntity.setName(request.getName());
+        cardEntity.setDescription(cardEntity.getDescription());
+        cardEntity.setDueDate(cardEntity.getDueDate());
+        cardEntity = cardRepository.save(cardEntity);
+
         return transformEntity(cardEntity);
     }
 

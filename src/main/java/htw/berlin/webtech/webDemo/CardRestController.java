@@ -1,9 +1,8 @@
 package htw.berlin.webtech.webDemo;
 
-import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.service.CardService;
 import htw.berlin.webtech.webDemo.api.Card;
-import htw.berlin.webtech.webDemo.api.CardCreateRequest;
+import htw.berlin.webtech.webDemo.api.CardManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,12 +31,18 @@ public class CardRestController {
     }
 
     @PostMapping(path = "/api/v1/cards")
-    public ResponseEntity<Void> createCard (@RequestBody CardCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createCard (@RequestBody CardManipulationRequest request) throws URISyntaxException {
         var card = cardService.create(request);
         URI uri = new URI("/api/v1/cards/" + card.getId());
         return ResponseEntity.created(uri).build();
     }
 
+    @PutMapping(path = "api/v1/cards/{id}")
+    public ResponseEntity<Card> updateCard(@PathVariable Long id, @RequestBody CardManipulationRequest request) {
+        var card = cardService.update(id, request);
+        return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
+    }
+
     @RequestMapping("/") //home Seite später?!
-    public String home() {return "Hier jibtet nüscht zu sehen! Did kannst mir glooben.";}
+    public ResponseEntity<String> home() {return ResponseEntity.ok("Hier jibtet nüscht zu sehen! Did kannst mir glooben.");}
 }
