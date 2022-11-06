@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 //import java.util.List;
 
 @Entity (name = "card")
-public class CardEntity { // Dataclip wird nicht erzeugt, DB-connection bei Database-Reiter verbindet nicht, wegen falscher Credentials?!
+public class CardEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class CardEntity { // Dataclip wird nicht erzeugt, DB-connection bei Data
     @Column(name = "description")
     private String description;
 
-    @Column(name = "due_date")
+    @Column(name = "due_date", nullable = false)
     private LocalDateTime dueDate;
 
     /*
@@ -46,6 +46,8 @@ public class CardEntity { // Dataclip wird nicht erzeugt, DB-connection bei Data
         this.register = register;
         */
     }
+
+    protected CardEntity() {}
 
     public Long getId() {
         return id;

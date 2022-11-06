@@ -7,15 +7,16 @@ public class CardCreateRequest {
     private String name; // Name der Karte
     private String description; // Beschreibung zum to-do
     private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
+    /*
     private List<Label> labels; // Labels der Karte
     private List<String> activity; // Aktivität auf der Karte; wie: Fälligkeitsdatum geändert etc.
-    //private Register register; // Liste
+    private Register register; // Liste
+     */
 
     public CardCreateRequest(String name, String description, LocalDateTime dueDate) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
-        //this.register = register;
     }
 
     public String getName() {
@@ -42,6 +43,7 @@ public class CardCreateRequest {
         this.dueDate = dueDate;
     }
 
+    /*
     public List<String> getActivity() {
         return activity;
     }
@@ -58,7 +60,6 @@ public class CardCreateRequest {
         this.labels = labels;
     }
 
-    /*
     public Register getRegister() { return register; }
 
     public void setRegister(Register register) { this.register = register; }
