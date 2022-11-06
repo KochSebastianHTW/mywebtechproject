@@ -1,35 +1,31 @@
 package htw.berlin.webtech.webDemo.api;
 
-import htw.berlin.webtech.persistence.Register;
-
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Card {
 
-    private long id; // eindeutige ID der Karte
-    private String name; // Name der Karte
-    private String description; // Beschreibung zum to-do
-    private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
+    private Long id;
+    private String name;
+    private String description;
+    private LocalDateTime dueDate;
+    private String register;
+    private Long label;
 
-    private  String register;
-    /*
-    private List<Label> labels; // Labels der Karte
-    private List<String> activity; // Aktivität auf der Karte; wie: Fälligkeitsdatum geändert etc.
-    */
-
-    public Card(long id, String name, String description, LocalDateTime dueDate, String register) {
+    public Card(Long id, String name, String description, LocalDateTime dueDate, String register, Long label) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.register = register;
+        this.label = label;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,5 +59,13 @@ public class Card {
 
     public void setRegister(String register) {
         this.register = register;
+    }
+
+    public Long getLabel() {
+        return label;
+    }
+
+    public void setLabel(Long label) {
+        this.label = label;
     }
 }

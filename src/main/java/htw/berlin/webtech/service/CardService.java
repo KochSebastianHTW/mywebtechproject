@@ -2,6 +2,7 @@ package htw.berlin.webtech.service;
 
 import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.persistence.CardRepository;
+import htw.berlin.webtech.persistence.LabelRepository;
 import htw.berlin.webtech.persistence.Register;
 import htw.berlin.webtech.webDemo.api.Card;
 import htw.berlin.webtech.webDemo.api.CardManipulationRequest;
@@ -14,9 +15,11 @@ import java.util.stream.Collectors;
 public class CardService {
 
     private final CardRepository cardRepository;
+    private final LabelRepository labelRepository;
 
-    public CardService(CardRepository cardRepository) {
+    public CardService(CardRepository cardRepository, LabelRepository labelRepository) {
         this.cardRepository = cardRepository;
+        this.labelRepository = labelRepository;
     }
 
     public List<Card> findAll() {
@@ -33,7 +36,8 @@ public class CardService {
 
     public Card create(CardManipulationRequest request) {
         var register = Register.valueOf(request.getRegister());
-        var cardEntity = new CardEntity(request.getName(), request.getDescription(), request.getDueDate(), register);
+        var label = labelRepository.findById(request.getLabel()).orElseThrow();
+        var cardEntity = new CardEntity(request.getName(), request.getDescription(), request.getDueDate(), register, label);
         cardEntity = cardRepository.save(cardEntity);
         return transformEntity(cardEntity);
     }
@@ -65,12 +69,14 @@ public class CardService {
 
     private Card transformEntity(CardEntity cardEntity) {
         var register = cardEntity.getRegister().name();
+
         return new Card(
                 cardEntity.getId(),
                 cardEntity.getName(),
                 cardEntity.getDescription(),
                 cardEntity.getDueDate(),
-                register
+                register,
+                cardEntity.getLabel().getId()
         );
     }
 }

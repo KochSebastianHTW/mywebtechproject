@@ -1,11 +1,7 @@
 package htw.berlin.webtech.persistence;
 
-//import htw.berlin.webtech.webDemo.api.Label;
-//import htw.berlin.webtech.webDemo.api.Register;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-//import java.util.List;
 
 @Entity (name = "card")
 public class CardEntity {
@@ -28,12 +24,17 @@ public class CardEntity {
     @Enumerated(value = EnumType.STRING)
     private Register register;
 
-    public CardEntity(String name, String description, LocalDateTime dueDate, Register register) {
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "label_id", referencedColumnName = "id")
+    private LabelEntity label;
+
+    public CardEntity(String name, String description, LocalDateTime dueDate, Register register, LabelEntity label) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.register = register;
+        this.label = label;
     }
 
     protected CardEntity() {}
@@ -72,5 +73,13 @@ public class CardEntity {
 
     public void setRegister(Register register) {
         this.register = register;
+    }
+
+    public LabelEntity getLabel() {
+        return label;
+    }
+
+    public void setLabel(LabelEntity label) {
+        this.label = label;
     }
 }
