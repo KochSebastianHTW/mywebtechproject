@@ -22,6 +22,7 @@ public class Card {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
+        this.register = register;
     }
 
     public long getId() {
