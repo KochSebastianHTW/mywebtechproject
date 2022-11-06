@@ -51,6 +51,15 @@ public class CardService {
         return transformEntity(cardEntity);
     }
 
+    public boolean deleteById(Long id) {
+        if (!cardRepository.existsById(id)) {
+            return false;
+        }
+
+        cardRepository.deleteById(id);
+        return true;
+    }
+
     private Card transformEntity(CardEntity cardEntity) {
         return new Card(
                 cardEntity.getId(),

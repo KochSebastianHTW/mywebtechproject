@@ -43,6 +43,12 @@ public class CardRestController {
         return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping(path = "/api/v1/cards/{id}")
+    public ResponseEntity<Void> deleteCard(@PathVariable Long id) {
+        boolean successful = cardService.deleteById(id);
+        return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
     @RequestMapping("/") //home Seite später?!
     public ResponseEntity<String> home() {return ResponseEntity.ok("Hier jibtet nüscht zu sehen! Did kannst mir glooben.");}
 }
