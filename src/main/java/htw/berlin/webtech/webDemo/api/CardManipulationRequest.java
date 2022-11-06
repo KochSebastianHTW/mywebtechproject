@@ -6,16 +6,19 @@ public class CardManipulationRequest {
     private String name; // Name der Karte
     private String description; // Beschreibung zum to-do
     private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
+
+    private String register;
     /*
     private List<Label> labels; // Labels der Karte
     private List<String> activity; // Aktivität auf der Karte; wie: Fälligkeitsdatum geändert etc.
     private Register register; // Liste
      */
 
-    public CardManipulationRequest(String name, String description, LocalDateTime dueDate) {
+    public CardManipulationRequest(String name, String description, LocalDateTime dueDate, String register) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
+        this.register = register;
     }
 
     public String getName() {
@@ -42,25 +45,7 @@ public class CardManipulationRequest {
         this.dueDate = dueDate;
     }
 
-    /*
-    public List<String> getActivity() {
-        return activity;
-    }
+    public String getRegister() { return register; }
 
-    public void setActivity(List<String> activity) {
-        this.activity = activity;
-    }
-
-    public List<Label> getLabels() {
-        return labels;
-    }
-
-    public void setLabels(List<Label> labels) {
-        this.labels = labels;
-    }
-
-    public Register getRegister() { return register; }
-
-    public void setRegister(Register register) { this.register = register; }
-    */
+    public void setRegister(String register) { this.register = register; }
 }
