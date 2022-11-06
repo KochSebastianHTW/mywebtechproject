@@ -27,7 +27,7 @@ public class CardRestController {
 
     @PostMapping(path = "/api/v1/cards")
     public ResponseEntity<Void> createCard (@RequestBody CardCreateRequest request) throws URISyntaxException {
-        var card = cardService.create((request));
+        var card = cardService.create(request);
         URI uri = new URI("/api/v1/cards/" + card.getId());
         return ResponseEntity.created(uri).build();
     }
