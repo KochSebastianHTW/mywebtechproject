@@ -1,5 +1,6 @@
 package htw.berlin.webtech.service;
 
+import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.persistence.CardRepository;
 import htw.berlin.webtech.persistence.LabelEntity;
 import htw.berlin.webtech.persistence.LabelRepository;
@@ -33,7 +34,12 @@ public class LabelService {
     }
 
     public Label create(LabelManipulationRequest request) {
-        var usingCards = cardRepository.findById(request.getUsingCardsIds());
+        var usingCardsIds = request.getUsingCardsIds();
+        List<CardEntity> usingCards = new ArrayList<>();
+        for (Long index: usingCardsIds) {
+            usingCards.add(cardRepository.findById(index).orElseThrow());
+
+        }
         var labelEntity = new LabelEntity(request.getName(), request.getColour(), usingCards);
         labelEntity = labelRepository.save(labelEntity);
         return transformEntity(labelEntity);
@@ -64,16 +70,18 @@ public class LabelService {
     }
 
     private Label transformEntity(LabelEntity labelEntity) {
-        List<LabelEntity> usingCards = new ArrayList<>();
-        for (LabelEntity label: usingCards) {
-            labelRepository.findById(labelEntity.getId());
-        }
+        LabelTransformer labelTransformer = new LabelTransformer();
+        return labelTransformer.transformEntity(labelEntity);
+        /*
+        List<LabelEntity> usingCardsIds = new ArrayList<>();
+        labelRepository.findById(labelEntity.getId());
 
         return new Label(
                 labelEntity.getId(),
                 labelEntity.getName(),
                 labelEntity.getColour(),
-                usingCards
+                usingCardsIds
         );
+        */
     }
 }

@@ -21,7 +21,7 @@ public class LabelEntity {
     @OneToMany(mappedBy = "labels", fetch = FetchType.EAGER)
     private List<CardEntity> usingCards = new ArrayList<>();
 
-    public LabelEntity(String name, String colour) {
+    public LabelEntity(String name, String colour, List<CardEntity> usingCards) {
         this.name = name;
         this.colour = colour;
         this.usingCards = usingCards;

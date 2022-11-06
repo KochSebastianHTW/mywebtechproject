@@ -6,7 +6,7 @@ public class Label {
 
     private long id;
     private String name;
-    private String colour; // TODO: eine Möglichkeit finden diese Farbe dann im Frontend darzustellen
+    private String colour; //TODO: eine Möglichkeit finden diese Farbe dann im Frontend darzustellen
     private List<Long> usingCardIds;
 
     public Label(long id, String name, String colour, List<Long> usingCardIds) {
