@@ -12,5 +12,7 @@ jobs:
         with:
           distribution: "adopt"
           java-version: 17
-      - name: clean build
+      - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+      - name: Run Backend Test
+        run: ./gradlew test --stacktrace
