@@ -35,6 +35,11 @@ public class CardService {
         return cardEntity.map(this::transformEntity).orElse(null);
     }
 
+    public Card findByName(String search) {
+        var cardEntity = cardRepository.findByNameContainsIgnoreCase(search);
+        return cardEntity.map(this::transformEntity).orElse(null);
+    }
+
     public Card create(CardManipulationRequest request) {
         var register = Register.valueOf(request.getRegister());
         var label = request.getLabel() != null ? labelRepository.findById(request.getLabel()).orElseThrow() : null;

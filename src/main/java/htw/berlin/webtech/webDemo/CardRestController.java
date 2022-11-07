@@ -49,6 +49,12 @@ public class CardRestController {
         return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
+    @RequestMapping(path= "api/v1/cards/search")
+    public ResponseEntity<Card> fetchCardByName(@RequestParam("q") String q) { //NameContainsIgnoreCase
+        var card = cardService.findByName(q);
+        return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
+    }
+
     @RequestMapping("/") //home Seite später?!
     public ResponseEntity<String> home() {return ResponseEntity.ok("Hier jibtet nüscht zu sehen! Did kannst mir glooben.");}
 }
