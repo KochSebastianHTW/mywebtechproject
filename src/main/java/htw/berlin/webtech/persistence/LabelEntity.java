@@ -27,7 +27,7 @@ public class LabelEntity {
         this.usingCards = usingCards;
     }
 
-    public LabelEntity() {}
+    protected LabelEntity() {}
 
     public Long getId() {
         return id;

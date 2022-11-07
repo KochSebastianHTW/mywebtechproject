@@ -6,14 +6,20 @@ import htw.berlin.webtech.persistence.LabelEntity;
 import htw.berlin.webtech.persistence.LabelRepository;
 import htw.berlin.webtech.webDemo.api.Label;
 import htw.berlin.webtech.webDemo.api.LabelManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class LabelService {
 
+    @Autowired
     private final LabelRepository labelRepository;
+
+    @Autowired
     private final CardRepository cardRepository;
 
     public LabelService(LabelRepository labelRepository, CardRepository cardRepository) {

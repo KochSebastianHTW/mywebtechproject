@@ -6,6 +6,7 @@ import htw.berlin.webtech.persistence.LabelRepository;
 import htw.berlin.webtech.persistence.Register;
 import htw.berlin.webtech.webDemo.api.Card;
 import htw.berlin.webtech.webDemo.api.CardManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,10 @@ import java.util.stream.Collectors;
 @Service
 public class CardService {
 
+    @Autowired
     private final CardRepository cardRepository;
+
+    @Autowired
     private final LabelRepository labelRepository;
 
     public CardService(CardRepository cardRepository, LabelRepository labelRepository) {
