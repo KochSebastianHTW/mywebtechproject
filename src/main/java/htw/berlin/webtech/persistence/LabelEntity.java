@@ -1,8 +1,6 @@
 package htw.berlin.webtech.persistence;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(name = "label")
 public class LabelEntity {
@@ -18,13 +16,9 @@ public class LabelEntity {
     @Column(name = "colour", nullable = false)
     private String colour;
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
-    private List<CardEntity> usingCards = new ArrayList<>();
-
-    public LabelEntity(String name, String colour, List<CardEntity> usingCards) {
+    public LabelEntity(String name, String colour) {
         this.name = name;
         this.colour = colour;
-        this.usingCards = usingCards;
     }
 
     protected LabelEntity() {}
@@ -47,13 +41,5 @@ public class LabelEntity {
 
     public void setColour(String colour) {
         this.colour = colour;
-    }
-
-    public List<CardEntity> getUsingCards() {
-        return usingCards;
-    }
-
-    public void setUsingCards(List<CardEntity> cards) {
-        this.usingCards = cards;
     }
 }

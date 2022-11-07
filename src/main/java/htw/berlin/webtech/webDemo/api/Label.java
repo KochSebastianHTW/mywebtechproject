@@ -1,19 +1,15 @@
 package htw.berlin.webtech.webDemo.api;
 
-import java.util.List;
-
 public class Label {
 
-    private long id;
+    private Long id;
     private String name;
     private String colour; //TODO: eine Möglichkeit finden diese Farbe dann im Frontend darzustellen
-    private List<Long> usingCardIds;
 
-    public Label(long id, String name, String colour, List<Long> usingCardIds) {
+    public Label(long id, String name, String colour) {
         this.id = id;
         this.name = name;
         this.colour = colour;
-        this.usingCardIds = usingCardIds;
     }
 
     public long getId() {
@@ -38,13 +34,5 @@ public class Label {
 
     public void setColour(String colour) {
         this.colour = colour;
-    }
-
-    public List<Long> getUsingCardIds() {
-        return usingCardIds;
-    }
-
-    public void setUsingCardIds(List<Long> usingCardIds) {
-        this.usingCardIds = usingCardIds;
     }
 }

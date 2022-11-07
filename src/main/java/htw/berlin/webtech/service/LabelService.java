@@ -1,6 +1,5 @@
 package htw.berlin.webtech.service;
 
-import htw.berlin.webtech.persistence.CardEntity;
 import htw.berlin.webtech.persistence.CardRepository;
 import htw.berlin.webtech.persistence.LabelEntity;
 import htw.berlin.webtech.persistence.LabelRepository;
@@ -9,7 +8,6 @@ import htw.berlin.webtech.webDemo.api.LabelManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,12 +38,7 @@ public class LabelService {
     }
 
     public Label create(LabelManipulationRequest request) {
-        List<Long> cardsIds = request.getUsingCardsIds();
-        List<CardEntity> usingCards = new ArrayList<>();
-        for (Long index: cardsIds) {
-            usingCards.add(cardRepository.findById(index).orElseThrow());
-        }
-        var labelEntity = new LabelEntity(request.getName(), request.getColour(), usingCards);
+        var labelEntity = new LabelEntity(request.getName(), request.getColour());
         labelEntity = labelRepository.save(labelEntity);
         return transformEntity(labelEntity);
     }
@@ -59,13 +52,6 @@ public class LabelService {
         var labelEntity = labelEntityOptional.get();
         labelEntity.setName(request.getName());
         labelEntity.setColour(request.getColour());
-
-        List<Long> cardIds = request.getUsingCardsIds();
-        List<CardEntity> cardEntities = new ArrayList<>();
-        for (Long cardId : cardIds) {
-            cardEntities.add(cardRepository.findById(cardId).orElseThrow());
-        }
-        labelEntity.setUsingCards(cardEntities);
 
         labelEntity = labelRepository.save(labelEntity);
 
@@ -84,16 +70,5 @@ public class LabelService {
     private Label transformEntity(LabelEntity labelEntity) {
         LabelTransformer labelTransformer = new LabelTransformer();
         return labelTransformer.transformEntity(labelEntity);
-        /*
-        List<LabelEntity> usingCardsIds = new ArrayList<>();
-        labelRepository.findById(labelEntity.getId());
-
-        return new Label(
-                labelEntity.getId(),
-                labelEntity.getName(),
-                labelEntity.getColour(),
-                usingCardsIds
-        );
-        */
     }
 }
