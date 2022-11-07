@@ -9,24 +9,24 @@ public class CardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long id; // eindeutige ID
 
     @Column(name = "name", nullable = false)
-    private String name;
+    private String name; // Name der Karte
 
     @Column(name = "description")
-    private String description;
+    private String description; // Beschreibung zum to-do
 
     @Column(name = "due_date", nullable = false)
-    private LocalDateTime dueDate;
+    private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
 
     @Column(name = "register", nullable = false)
     @Enumerated(value = EnumType.STRING)
-    private Register register;
+    private Register register; // Liste in der die Karte liegt
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "label_id", referencedColumnName = "id")
-    private LabelEntity label;
+    private LabelEntity label; // hinzugefügtes Label
 
     public CardEntity(String name, String description, LocalDateTime dueDate, Register register, LabelEntity label) {
         this.name = name;

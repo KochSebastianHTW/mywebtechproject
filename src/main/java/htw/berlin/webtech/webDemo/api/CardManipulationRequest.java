@@ -3,10 +3,9 @@ package htw.berlin.webtech.webDemo.api;
 import java.time.LocalDateTime;
 
 public class CardManipulationRequest {
-    private String name; // Name der Karte
-    private String description; // Beschreibung zum to-do
-    private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
-
+    private String name;
+    private String description;
+    private LocalDateTime dueDate;
     private String register;
     private Long label;
 

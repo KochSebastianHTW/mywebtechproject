@@ -8,13 +8,13 @@ public class LabelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long id; // eindeutige ID des Labels
 
     @Column(name = "name", nullable = false)
-    private String name;
+    private String name; // Name des Labels
 
     @Column(name = "colour", nullable = false)
-    private String colour;
+    private String colour; // Hex-Code des Labels
 
     public LabelEntity(String name, String colour) {
         this.name = name;

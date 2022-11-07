@@ -5,14 +5,12 @@ import java.util.List;
 
 public class LabelManipulationRequest {
 
-    private String name; // Name der Karte
-    private String colour; // Beschreibung zum to-do
-    private List<Long> usingCardsIds;
+    private String name;
+    private String colour;
 
-    public LabelManipulationRequest(String name, String colour, List<Long> usingCardsIds) {
+    public LabelManipulationRequest(String name, String colour) {
         this.name = name;
         this.colour = colour;
-        this.usingCardsIds = usingCardsIds;
     }
 
     public String getName() {
@@ -29,13 +27,5 @@ public class LabelManipulationRequest {
 
     public void setColour(String description) {
         this.colour = description;
-    }
-
-    public List<Long> getUsingCardsIds() {
-        return usingCardsIds != null ? usingCardsIds : new ArrayList<>();
-    }
-
-    public void setUsingCardsIds(List<Long> usingCardsIds) {
-        this.usingCardsIds = usingCardsIds;
     }
 }

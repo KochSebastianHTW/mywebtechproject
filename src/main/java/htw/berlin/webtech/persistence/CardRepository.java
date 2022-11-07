@@ -7,6 +7,4 @@ import java.util.List;
 
 @Repository
 public interface CardRepository extends JpaRepository<CardEntity, Long> { // für eigene SQL Abfragen
-
-    List<CardEntity> findAllByName(String name);
 }

@@ -49,12 +49,18 @@ public class CardService {
             return null;
         }
 
-        CardEntity cardEntity = cardEntityOptional.get();
+        var cardEntity = cardEntityOptional.get();
         cardEntity.setName(request.getName());
         cardEntity.setDescription(request.getDescription());
         cardEntity.setDueDate(request.getDueDate());
         cardEntity.setRegister(Register.valueOf(request.getRegister()));
-        cardEntity.setLabel(labelRepository.findById(request.getLabel()).orElseThrow());
+
+        var labelEntity = request.getLabel() != null ? request.getLabel() : null;
+        if (labelEntity != null) {
+            cardEntity.setLabel(labelRepository.findById(labelEntity).orElseThrow());
+        } else {
+            cardEntity.setLabel(null);
+        }
         cardEntity = cardRepository.save(cardEntity);
 
         return transformEntity(cardEntity);
