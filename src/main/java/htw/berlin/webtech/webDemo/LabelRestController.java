@@ -1,5 +1,6 @@
 package htw.berlin.webtech.webDemo;
 
+import htw.berlin.webtech.persistence.LabelEntity;
 import htw.berlin.webtech.service.LabelService;
 import htw.berlin.webtech.webDemo.api.Label;
 import htw.berlin.webtech.webDemo.api.LabelManipulationRequest;
@@ -39,7 +40,7 @@ public class LabelRestController {
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping(path = "api/v1/labels/{id}")
+    @PutMapping(path = "/api/v1/labels/{id}")
     public ResponseEntity<Label> updateLabel(@PathVariable Long id, @RequestBody LabelManipulationRequest request) {
         var label = labelService.update(id, request);
         return label != null ? ResponseEntity.ok(label) : ResponseEntity.notFound().build();
@@ -49,5 +50,10 @@ public class LabelRestController {
     public ResponseEntity<Void> deleteLabel(@PathVariable Long id) {
         boolean successful = labelService.deleteById(id);
         return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    @RequestMapping(path = "api/v1/labels/search")
+    public ResponseEntity<List<Label>> fetchLabelByName(@RequestParam("q") String q) {
+        return ResponseEntity.ok(labelService.findByName(q));
     }
 }

@@ -37,6 +37,13 @@ public class LabelService {
         return labelEntity.map(this::transformEntity).orElse(null);
     }
 
+    public  List<Label> findByName(String search) {
+        List<LabelEntity> labels = labelRepository.findByNameContainsIgnoreCase(search);
+        return labels.stream()
+                .map(this::transformEntity)
+                .collect(Collectors.toList());
+    }
+
     public Label create(LabelManipulationRequest request) {
         var labelEntity = new LabelEntity(request.getName(), request.getColour());
         labelEntity = labelRepository.save(labelEntity);

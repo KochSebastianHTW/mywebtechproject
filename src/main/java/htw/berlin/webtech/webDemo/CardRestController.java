@@ -37,7 +37,7 @@ public class CardRestController {
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping(path = "api/v1/cards/{id}")
+    @PutMapping(path = "/api/v1/cards/{id}")
     public ResponseEntity<Card> updateCard(@PathVariable Long id, @RequestBody CardManipulationRequest request) {
         var card = cardService.update(id, request);
         return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
@@ -49,10 +49,9 @@ public class CardRestController {
         return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
-    @RequestMapping(path= "api/v1/cards/search")
+    @RequestMapping(path= "/api/v1/cards/search")
     public ResponseEntity<List<Card>> fetchCardByName(@RequestParam("q") String q) { //NameContainsIgnoreCase
-        var cards = cardService.findByName(q);
-        return cards != null ? ResponseEntity.ok(cards) : ResponseEntity.notFound().build();
+        return ResponseEntity.ok(cardService.findByName(q));
     }
 
     @RequestMapping("/") //home Seite später?!
