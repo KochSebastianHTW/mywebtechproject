@@ -4,18 +4,18 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "label")
 public class LabelEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "colour")
+    @Column(name = "colour", nullable = false)
     private String colour;
 
     @OneToMany(mappedBy = "id", fetch = FetchType.EAGER)
