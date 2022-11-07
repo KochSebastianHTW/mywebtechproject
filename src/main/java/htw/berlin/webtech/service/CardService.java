@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,9 +36,11 @@ public class CardService {
         return cardEntity.map(this::transformEntity).orElse(null);
     }
 
-    public Card findByName(String search) {
-        var cardEntity = cardRepository.findByNameContainsIgnoreCase(search);
-        return cardEntity.map(this::transformEntity).orElse(null);
+    public List<Card> findByName(String search) {
+        List<CardEntity> cards = cardRepository.findByNameContainsIgnoreCase(search);
+        return cards.stream()
+                .map(this::transformEntity)
+                .collect(Collectors.toList());
     }
 
     public Card create(CardManipulationRequest request) {

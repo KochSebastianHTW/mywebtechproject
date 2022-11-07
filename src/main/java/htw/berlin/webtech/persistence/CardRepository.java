@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CardRepository extends JpaRepository<CardEntity, Long> { // für eigene SQL Abfragen
 
-    Optional<CardEntity> findByNameContainsIgnoreCase(String str);
+    List<CardEntity> findByNameContainsIgnoreCase(String str);
 }

@@ -50,9 +50,9 @@ public class CardRestController {
     }
 
     @RequestMapping(path= "api/v1/cards/search")
-    public ResponseEntity<Card> fetchCardByName(@RequestParam("q") String q) { //NameContainsIgnoreCase
-        var card = cardService.findByName(q);
-        return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
+    public ResponseEntity<List<Card>> fetchCardByName(@RequestParam("q") String q) { //NameContainsIgnoreCase
+        var cards = cardService.findByName(q);
+        return cards != null ? ResponseEntity.ok(cards) : ResponseEntity.notFound().build();
     }
 
     @RequestMapping("/") //home Seite später?!
