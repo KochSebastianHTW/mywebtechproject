@@ -1,5 +1,6 @@
 package htw.berlin.webtech.webDemo.api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LabelManipulationRequest {
@@ -31,7 +32,7 @@ public class LabelManipulationRequest {
     }
 
     public List<Long> getUsingCardsIds() {
-        return usingCardsIds;
+        return usingCardsIds != null ? usingCardsIds : new ArrayList<>();
     }
 
     public void setUsingCardsIds(List<Long> usingCardsIds) {

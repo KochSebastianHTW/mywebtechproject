@@ -40,11 +40,10 @@ public class LabelService {
     }
 
     public Label create(LabelManipulationRequest request) {
-        var usingCardsIds = request.getUsingCardsIds();
+        List<Long> cardsIds = request.getUsingCardsIds();
         List<CardEntity> usingCards = new ArrayList<>();
-        for (Long index: usingCardsIds) {
+        for (Long index: cardsIds) {
             usingCards.add(cardRepository.findById(index).orElseThrow());
-
         }
         var labelEntity = new LabelEntity(request.getName(), request.getColour(), usingCards);
         labelEntity = labelRepository.save(labelEntity);
@@ -59,8 +58,15 @@ public class LabelService {
 
         var labelEntity = labelEntityOptional.get();
         labelEntity.setName(request.getName());
-        labelEntity.setName(labelEntity.getColour());
-        labelEntity.setUsingCards(labelEntity.getUsingCards());
+        labelEntity.setColour(request.getColour());
+
+        List<Long> cardIds = request.getUsingCardsIds();
+        List<CardEntity> cardEntities = new ArrayList<>();
+        for (Long cardId : cardIds) {
+            cardEntities.add(cardRepository.findById(cardId).orElseThrow());
+        }
+        labelEntity.setUsingCards(cardEntities);
+
         labelEntity = labelRepository.save(labelEntity);
 
         return transformEntity(labelEntity);
