@@ -1,4 +1,4 @@
-package htw.berlin.webtech.webDemo.api;
+package htwberlin.webtech.webDemo.api;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +16,8 @@ public class CardManipulationRequest {
         this.register = register;
         this.label = label;
     }
+
+    public CardManipulationRequest() {}
 
     public String getName() {
         return name;

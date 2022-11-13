@@ -1,4 +1,4 @@
-package htw.berlin.webtech.persistence;
+package htwberlin.webtech.persistence;
 
 public enum Register {
     OPEN,

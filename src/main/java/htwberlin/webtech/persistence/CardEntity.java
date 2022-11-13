@@ -1,4 +1,4 @@
-package htw.berlin.webtech.persistence;
+package htwberlin.webtech.persistence;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -1,10 +1,10 @@
-package htw.berlin.webtech.service;
+package htwberlin.webtech.service;
 
-import htw.berlin.webtech.persistence.CardRepository;
-import htw.berlin.webtech.persistence.LabelEntity;
-import htw.berlin.webtech.persistence.LabelRepository;
-import htw.berlin.webtech.webDemo.api.Label;
-import htw.berlin.webtech.webDemo.api.LabelManipulationRequest;
+import htwberlin.webtech.persistence.CardRepository;
+import htwberlin.webtech.persistence.LabelEntity;
+import htwberlin.webtech.persistence.LabelRepository;
+import htwberlin.webtech.webDemo.api.Label;
+import htwberlin.webtech.webDemo.api.LabelManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

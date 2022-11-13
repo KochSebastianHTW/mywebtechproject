@@ -1,8 +1,8 @@
-package htw.berlin.webtech.webDemo;
+package htwberlin.webtech.webDemo;
 
-import htw.berlin.webtech.service.CardService;
-import htw.berlin.webtech.webDemo.api.Card;
-import htw.berlin.webtech.webDemo.api.CardManipulationRequest;
+import htwberlin.webtech.service.CardService;
+import htwberlin.webtech.webDemo.api.Card;
+import htwberlin.webtech.webDemo.api.CardManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

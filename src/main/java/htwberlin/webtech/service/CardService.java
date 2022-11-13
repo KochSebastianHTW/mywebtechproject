@@ -1,13 +1,15 @@
-package htw.berlin.webtech.service;
+package htwberlin.webtech.service;
 
-import htw.berlin.webtech.persistence.*;
-import htw.berlin.webtech.webDemo.api.Card;
-import htw.berlin.webtech.webDemo.api.CardManipulationRequest;
+import htwberlin.webtech.webDemo.api.Card;
+import htwberlin.webtech.webDemo.api.CardManipulationRequest;
+import htwberlin.webtech.persistence.CardEntity;
+import htwberlin.webtech.persistence.CardRepository;
+import htwberlin.webtech.persistence.LabelRepository;
+import htwberlin.webtech.persistence.Register;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

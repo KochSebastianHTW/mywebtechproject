@@ -1,7 +1,7 @@
-package htw.berlin.webtech.service;
+package htwberlin.webtech.service;
 
-import htw.berlin.webtech.persistence.LabelEntity;
-import htw.berlin.webtech.webDemo.api.Label;
+import htwberlin.webtech.persistence.LabelEntity;
+import htwberlin.webtech.webDemo.api.Label;
 
 public class LabelTransformer {
 

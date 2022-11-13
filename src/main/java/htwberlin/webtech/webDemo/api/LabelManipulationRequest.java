@@ -1,7 +1,5 @@
-package htw.berlin.webtech.webDemo.api;
+package htwberlin.webtech.webDemo.api;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class LabelManipulationRequest {
 
@@ -12,6 +10,8 @@ public class LabelManipulationRequest {
         this.name = name;
         this.colour = colour;
     }
+
+    public LabelManipulationRequest() {}
 
     public String getName() {
         return name;

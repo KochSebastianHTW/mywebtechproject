@@ -1,9 +1,8 @@
-package htw.berlin.webtech.webDemo;
+package htwberlin.webtech.webDemo;
 
-import htw.berlin.webtech.persistence.LabelEntity;
-import htw.berlin.webtech.service.LabelService;
-import htw.berlin.webtech.webDemo.api.Label;
-import htw.berlin.webtech.webDemo.api.LabelManipulationRequest;
+import htwberlin.webtech.service.LabelService;
+import htwberlin.webtech.webDemo.api.Label;
+import htwberlin.webtech.webDemo.api.LabelManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package htw.berlin.webtech.webDemo.api;
+package htwberlin.webtech.webDemo.api;
 
 public class Label {
 
