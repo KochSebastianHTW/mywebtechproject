@@ -1,5 +1,7 @@
 package htwberlin.webtech.persistence;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -18,6 +20,7 @@ public class CardEntity {
     private String description; // Beschreibung zum to-do
 
     @Column(name = "due_date", nullable = false)
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm.ss")
     private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
 
     @Column(name = "register", nullable = false)

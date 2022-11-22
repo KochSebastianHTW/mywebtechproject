@@ -1,5 +1,7 @@
 package htwberlin.webtech.webDemo.api;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 
 public class Card {
@@ -7,6 +9,7 @@ public class Card {
     private Long id;
     private String name;
     private String description;
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm.ss")
     private LocalDateTime dueDate;
     private String register;
     private Long label;
