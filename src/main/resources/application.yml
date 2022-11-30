@@ -3,22 +3,26 @@ spring:
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
     url: ${JDBC_DATABASE_URL}
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: org.h2.Driver
     hikari:
       maximum-pool-size: 5
+  h2:
+    console:
+      enabled: true
+      path: /db-console
   jpa:
     properties: ##  Hibernate Properties
       hibernate:
         # The SQL dialect makes Hibernate general better SQL for the chosen database
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.H2Dialect
         jdbc:
           time_zone: UTC
     show-sql: false # Set true for debugging
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate: # Hibernate ddl auto
       ddl-auto: update # (create, create-drop, validate, update)
     open-in-view: false
   sql:
     init:
-      platform: postgres
+      platform: h2
       mode: always
