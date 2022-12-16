@@ -4,12 +4,12 @@ public class Label {
 
     private Long id;
     private String name;
-    private String colour; //TODO: eine Möglichkeit finden diese Farbe dann im Frontend darzustellen
+    private String color; //TODO: eine Möglichkeit finden diese Farbe dann im Frontend darzustellen
 
-    public Label(long id, String name, String colour) {
+    public Label(long id, String name, String color) {
         this.id = id;
         this.name = name;
-        this.colour = colour;
+        this.color = color;
     }
 
     public long getId() {
@@ -28,11 +28,11 @@ public class Label {
         this.name = name;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(String color) {
+        this.color = color;
     }
 }

@@ -45,7 +45,7 @@ public class LabelService {
     }
 
     public Label create(LabelManipulationRequest request) {
-        var labelEntity = new LabelEntity(request.getName(), request.getColour());
+        var labelEntity = new LabelEntity(request.getName(), request.getColor());
         labelEntity = labelRepository.save(labelEntity);
         return transformEntity(labelEntity);
     }
@@ -58,7 +58,7 @@ public class LabelService {
 
         var labelEntity = labelEntityOptional.get();
         labelEntity.setName(request.getName());
-        labelEntity.setColour(request.getColour());
+        labelEntity.setColor(request.getColor());
 
         labelEntity = labelRepository.save(labelEntity);
 

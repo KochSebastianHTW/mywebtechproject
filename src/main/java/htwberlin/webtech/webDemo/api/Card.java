@@ -9,7 +9,7 @@ public class Card {
     private Long id;
     private String name;
     private String description;
-    @JsonFormat(pattern = "dd.MM.yyyy HH:mm.ss")
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm")
     private LocalDateTime dueDate;
     private String register;
     private Long label;

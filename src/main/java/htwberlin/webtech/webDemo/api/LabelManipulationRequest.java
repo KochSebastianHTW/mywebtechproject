@@ -4,11 +4,11 @@ package htwberlin.webtech.webDemo.api;
 public class LabelManipulationRequest {
 
     private String name;
-    private String colour;
+    private String color;
 
-    public LabelManipulationRequest(String name, String colour) {
+    public LabelManipulationRequest(String name, String color) {
         this.name = name;
-        this.colour = colour;
+        this.color = color;
     }
 
     public LabelManipulationRequest() {}
@@ -21,11 +21,11 @@ public class LabelManipulationRequest {
         this.name = name;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
-    public void setColour(String description) {
-        this.colour = description;
+    public void setColor(String description) {
+        this.color = description;
     }
 }

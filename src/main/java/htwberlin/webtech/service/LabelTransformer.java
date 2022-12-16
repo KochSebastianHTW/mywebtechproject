@@ -9,7 +9,7 @@ public class LabelTransformer {
         return new Label(
                 labelEntity.getId(),
                 labelEntity.getName(),
-                labelEntity.getColour()
+                labelEntity.getColor()
         );
     }
 }

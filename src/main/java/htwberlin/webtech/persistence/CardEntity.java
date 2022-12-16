@@ -20,7 +20,7 @@ public class CardEntity {
     private String description; // Beschreibung zum to-do
 
     @Column(name = "due_date", nullable = false)
-    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm.ss")
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
     private LocalDateTime dueDate; // Fälligkeitsdatum und Uhrzeit
 
     @Column(name = "register", nullable = false)

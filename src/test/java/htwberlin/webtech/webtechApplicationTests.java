@@ -1,4 +1,4 @@
-package htwberlin.webtech.webDemo;
+package htwberlin.webtech;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

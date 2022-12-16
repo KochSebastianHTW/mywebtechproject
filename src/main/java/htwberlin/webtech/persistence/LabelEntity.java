@@ -14,11 +14,11 @@ public class LabelEntity {
     private String name; // Name des Labels
 
     @Column(name = "colour", nullable = false)
-    private String colour; // Hex-Code des Labels
+    private String color; // Hex-Code des Labels
 
-    public LabelEntity(String name, String colour) {
+    public LabelEntity(String name, String color) {
         this.name = name;
-        this.colour = colour;
+        this.color = color;
     }
 
     protected LabelEntity() {}
@@ -35,11 +35,11 @@ public class LabelEntity {
         this.name = name;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(String color) {
+        this.color = color;
     }
 }
