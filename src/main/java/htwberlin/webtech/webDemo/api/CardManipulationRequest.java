@@ -1,11 +1,18 @@
 package htwberlin.webtech.webDemo.api;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 public class CardManipulationRequest {
+    @Size(min = 1, message = "Please provide a name with 1 letter or more")
     private String name;
     private String description;
     private LocalDateTime dueDate;
+    @Pattern(
+        regexp = "OPEN|IN_PROGRESS|DONE|ARCHIVE",
+        message = "Please provide 'OPEN', 'IN_PROGRESS', 'DONE' or 'ARCHIVE' for register"
+    )
     private String register;
     private Long label;
 

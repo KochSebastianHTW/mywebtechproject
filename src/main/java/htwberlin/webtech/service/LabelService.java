@@ -1,5 +1,6 @@
 package htwberlin.webtech.service;
 
+import htwberlin.webtech.persistence.CardEntity;
 import htwberlin.webtech.persistence.CardRepository;
 import htwberlin.webtech.persistence.LabelEntity;
 import htwberlin.webtech.persistence.LabelRepository;
@@ -68,6 +69,18 @@ public class LabelService {
     public boolean deleteById(Long id) {
         if (!labelRepository.existsById(id)) {
             return false;
+        }
+
+        var cardEntityList = cardRepository.findAll();
+        for (CardEntity cE: cardEntityList) {
+            var cardEntityOptional = cardRepository.findById(cE.getId());
+            var cardEntity = cardEntityOptional.get();
+            var labelEntityOptional = labelRepository.findById(id);
+            var labelEntity = labelEntityOptional.get();
+            if (labelEntity == cardEntity.getLabel()) {
+                cardEntity.setLabel(null);
+            }
+            cardRepository.save(cardEntity);
         }
 
         labelRepository.deleteById(id);

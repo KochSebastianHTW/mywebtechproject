@@ -1,11 +1,13 @@
 package htwberlin.webtech.webDemo;
 
 import htwberlin.webtech.service.CardService;
+import htwberlin.webtech.service.LabelService;
 import htwberlin.webtech.webDemo.api.Card;
 import htwberlin.webtech.webDemo.api.CardManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -15,8 +17,11 @@ public class CardRestController {
 
     private final CardService cardService;
 
-    public CardRestController(CardService cardService) {
+    private final LabelService labelService;
+
+    public CardRestController(CardService cardService, LabelService labelService) {
         this.cardService = cardService;
+        this.labelService = labelService;
     }
 
     @GetMapping(path = "/api/v1/cards")
@@ -31,14 +36,19 @@ public class CardRestController {
     }
 
     @PostMapping(path = "/api/v1/cards")
-    public ResponseEntity<Void> createCard (@RequestBody CardManipulationRequest request) throws URISyntaxException {
-        var card = cardService.create(request);
-        URI uri = new URI("/api/v1/cards/" + card.getId());
-        return ResponseEntity.created(uri).build();
+    public ResponseEntity<Void> createCard(@Valid @RequestBody CardManipulationRequest request) throws URISyntaxException {
+        var valid = validate(request);
+        if (valid) {
+            var card = cardService.create(request);
+            URI uri = new URI("/api/v1/cards/" + card.getId());
+            return ResponseEntity.created(uri).build();
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping(path = "/api/v1/cards/{id}")
-    public ResponseEntity<Card> updateCard(@PathVariable Long id, @RequestBody CardManipulationRequest request) {
+    public ResponseEntity<Card> updateCard(@PathVariable Long id, @Valid @RequestBody CardManipulationRequest request) {
         var card = cardService.update(id, request);
         return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
     }
@@ -54,6 +64,7 @@ public class CardRestController {
         return ResponseEntity.ok(cardService.findByName(q));
     }
 
-    @RequestMapping("/") //home Seite später?!
-    public ResponseEntity<String> home() {return ResponseEntity.ok("Hier jibtet nüscht zu sehen! Did kannst mir glooben.");}
+    private boolean validate(CardManipulationRequest request) {
+        return labelService.findById(request.getLabel()) != null;
+    }
 }

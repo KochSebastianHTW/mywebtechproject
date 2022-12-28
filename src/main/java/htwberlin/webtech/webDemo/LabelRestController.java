@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -33,14 +34,14 @@ public class LabelRestController {
     }
 
     @PostMapping(path = "/api/v1/labels")
-    public ResponseEntity<Void> createLabel (@RequestBody LabelManipulationRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createLabel(@Valid @RequestBody LabelManipulationRequest request) throws URISyntaxException {
         var label = labelService.create(request);
         URI uri = new URI("/api/v1/labels/" + label.getId());
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(path = "/api/v1/labels/{id}")
-    public ResponseEntity<Label> updateLabel(@PathVariable Long id, @RequestBody LabelManipulationRequest request) {
+    public ResponseEntity<Label> updateLabel(@PathVariable Long id, @Valid @RequestBody LabelManipulationRequest request) {
         var label = labelService.update(id, request);
         return label != null ? ResponseEntity.ok(label) : ResponseEntity.notFound().build();
     }

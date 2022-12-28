@@ -1,9 +1,17 @@
 package htwberlin.webtech.webDemo.api;
 
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class LabelManipulationRequest {
 
+    @Size(min = 1, message = "Please provide a name with 1 letter or more")
     private String name;
+    @Pattern(
+            regexp = "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$\n",
+            message = "Please provide a hex color code -> '#' plus 3 or 6 digits with 1-6 and A-F"
+    )
     private String color;
 
     public LabelManipulationRequest(String name, String color) {
