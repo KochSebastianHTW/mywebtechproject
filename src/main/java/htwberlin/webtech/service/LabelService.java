@@ -9,6 +9,7 @@ import htwberlin.webtech.webDemo.api.LabelManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class LabelService {
         List<LabelEntity> labels = labelRepository.findAll();
         return labels.stream()
                 .map(this::transformEntity)
+                .sorted(Comparator.comparing(Label::getName))
                 .collect(Collectors.toList());
     }
 

@@ -9,8 +9,8 @@ public class LabelManipulationRequest {
     @Size(min = 1, message = "Please provide a name with 1 letter or more")
     private String name;
     @Pattern(
-            regexp = "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$\n",
-            message = "Please provide a hex color code -> '#' plus 3 or 6 digits with 1-6 and A-F"
+            regexp = "#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+            message = "Please provide a hex color code -> '#' plus 3 or 6 digits of 1-6 A-F and/or a-f"
     )
     private String color;
 

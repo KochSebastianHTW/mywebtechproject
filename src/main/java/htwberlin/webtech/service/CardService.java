@@ -9,6 +9,7 @@ import htwberlin.webtech.persistence.Register;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class CardService {
         List<CardEntity> cards = cardRepository.findAll();
         return cards.stream()
                 .map(this::transformEntity)
+                .sorted(Comparator.comparing(Card::getDueDate))
                 .collect(Collectors.toList());
     }
 
