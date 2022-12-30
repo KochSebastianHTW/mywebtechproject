@@ -31,7 +31,7 @@ public class LabelService {
         List<LabelEntity> labels = labelRepository.findAll();
         return labels.stream()
                 .map(this::transformEntity)
-                .sorted(Comparator.comparing(Label::getName))
+                .sorted(Comparator.comparing(Label::getName, String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
     }
 

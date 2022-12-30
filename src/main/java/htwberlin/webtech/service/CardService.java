@@ -49,7 +49,7 @@ public class CardService {
 
     public Card create(CardManipulationRequest request) {
         var register = Register.valueOf(request.getRegister());
-        var label = request.getLabel() != null ? labelRepository.findById(request.getLabel()).orElseThrow() : null;
+        var label = request.getLabelId() != null ? labelRepository.findById(request.getLabelId()).orElseThrow() : null;
         var cardEntity = new CardEntity(request.getName(), request.getDescription(), request.getDueDate(), register, label);
         cardEntity = cardRepository.save(cardEntity);
         return transformEntity(cardEntity);
@@ -67,9 +67,9 @@ public class CardService {
         cardEntity.setDueDate(request.getDueDate());
         cardEntity.setRegister(Register.valueOf(request.getRegister()));
 
-        var labelEntity = request.getLabel() != null ? request.getLabel() : null;
-        if (labelEntity != null) {
-            cardEntity.setLabel(labelRepository.findById(labelEntity).orElseThrow());
+        var labelId = request.getLabelId() != null ? request.getLabelId() : null;
+        if (labelId != null) {
+            cardEntity.setLabel(labelRepository.findById(labelId).orElseThrow());
         } else {
             cardEntity.setLabel(null);
         }

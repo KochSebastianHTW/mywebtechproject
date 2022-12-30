@@ -65,9 +65,9 @@ public class CardRestController {
     }
 
     private boolean validate(CardManipulationRequest request) {
-        if (request.getLabel() == null) {
+        if (request.getLabelId() == null) {
             return true;
         }
-        return labelService.findById(request.getLabel()) != null;
+        return labelService.findById(request.getLabelId()) != null;
     }
 }

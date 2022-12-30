@@ -14,14 +14,14 @@ public class CardManipulationRequest {
         message = "Please provide 'OPEN', 'IN_PROGRESS', 'DONE' or 'ARCHIVE' for register"
     )
     private String register;
-    private Long label;
+    private Long labelId;
 
-    public CardManipulationRequest(String name, String description, LocalDateTime dueDate, String register, Long label) {
+    public CardManipulationRequest(String name, String description, LocalDateTime dueDate, String register, Long labelId) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.register = register;
-        this.label = label;
+        this.labelId = labelId;
     }
 
     public CardManipulationRequest() {}
@@ -54,11 +54,11 @@ public class CardManipulationRequest {
 
     public void setRegister(String register) { this.register = register; }
 
-    public Long getLabel() {
-        return label;
+    public Long getLabelId() {
+        return labelId;
     }
 
-    public void setLabel(Long label) {
-        this.label = label;
+    public void setLabelId(Long labelId) {
+        this.labelId = labelId;
     }
 }

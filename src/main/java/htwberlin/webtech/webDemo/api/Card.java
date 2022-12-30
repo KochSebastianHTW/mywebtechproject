@@ -13,15 +13,15 @@ public class Card {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dueDate;
     private String register;
-    private Long label;
+    private Long labelId;
 
-    public Card(Long id, String name, String description, LocalDateTime dueDate, String register, Long label) {
+    public Card(Long id, String name, String description, LocalDateTime dueDate, String register, Long labelId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
         this.register = register;
-        this.label = label;
+        this.labelId = labelId;
     }
 
     public Long getId() {
@@ -64,11 +64,11 @@ public class Card {
         this.register = register;
     }
 
-    public Long getLabel() {
-        return label;
+    public Long getLabelId() {
+        return labelId;
     }
 
-    public void setLabel(Long label) {
-        this.label = label;
+    public void setLabelId(Long labelId) {
+        this.labelId = labelId;
     }
 }
