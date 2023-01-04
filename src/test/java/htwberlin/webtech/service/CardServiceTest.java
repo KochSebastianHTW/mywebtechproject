@@ -89,19 +89,14 @@ public class CardServiceTest implements WithAssertions {
         assertThat(result.getDueDate()).isEqualTo(localDateTime);
         assertThat(result.getRegister()).isEqualTo("OPEN");
     }
-}
-/*
+
     // Jap, hier läuft wat schief
     @Test
     @DisplayName("should return updated card after update")
     void returnUpdatedCardAfterUpdateRequest() {
         // given
-        var labelEntity = Mockito.mock(LabelEntity.class);
-        when(labelEntity.getId()).thenReturn(3L);
-        when(labelEntity.getName()).thenReturn("Sollte gemacht werden");
-        when(labelEntity.getColor()).thenReturn("#EED202");
+        var labelEntity = new LabelEntity("Sollte gemacht werden", "#EED202");
 
-        var cardEntity = Mockito.mock(CardEntity.class);
         Long givenId = 1L;
         String name = "X-Mas";
         String descr = "yeah";
@@ -112,12 +107,7 @@ public class CardServiceTest implements WithAssertions {
                 18,
                 0
         );
-        when(cardEntity.getId()).thenReturn(givenId);
-        when(cardEntity.getName()).thenReturn(name);
-        when(cardEntity.getDescription()).thenReturn(descr);
-        when(cardEntity.getDueDate()).thenReturn(dueDate.minusYears(1));
-        when(cardEntity.getRegister()).thenReturn(Register.DONE);
-        when(cardEntity.getLabel()).thenReturn(labelEntity);
+        var cardEntity = new CardEntity(name, descr, dueDate, Register.DONE, labelEntity);
 
         var request = Mockito.mock(CardManipulationRequest.class);
         when(request.getName()).thenReturn(name);
@@ -131,9 +121,6 @@ public class CardServiceTest implements WithAssertions {
 
         // when
         var result = cardService.update(givenId, request);
-        System.out.println("[ " + cardEntity.getDueDate() + " | " + cardEntity.getRegister() + " | " + cardEntity.getLabel().getId() + " ]");
-        System.out.println("[ " + request.getDueDate() + " | " + request.getRegister() + " | " + request.getLabelId() + " ]");
-        System.out.println("[ " + result.getDueDate() + " | " + result.getRegister() + " | " + result.getLabelId() + " ]");
 
         // then
         assertThat(result.getDueDate()).isEqualTo(dueDate);
@@ -141,4 +128,3 @@ public class CardServiceTest implements WithAssertions {
         assertThat(result.getLabelId()).isEqualTo(null);
     }
 }
-*/
